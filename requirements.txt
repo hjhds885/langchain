@@ -1,6 +1,5 @@
 streamlit==1.38.0
 streamlit-webrtc==0.47.9
-opencv-python==4.10.0.84
 opencv-python-headless==4.10.0.84
 SpeechRecognition==3.10.1
 pyttsx3==2.91
