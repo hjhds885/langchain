@@ -28,10 +28,10 @@ nest_asyncio.apply()
 
 def init_page():
     st.set_page_config(
-        page_title="My Great ChatGPT",
+        page_title="My Chat",
         page_icon="🤗"
     )
-    st.header("My Great ChatGPT 🤗")
+    st.header("My Chat 🤗")
     st.sidebar.title("Options")
 
 def init_messages():
