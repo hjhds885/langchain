@@ -24,7 +24,7 @@ import keyboard
 #from torch import res
 
 r = sr.Recognizer()
-engine = pyttsx3.init()
+#engine = pyttsx3.init()
 nest_asyncio.apply()
 
 def init_page():
@@ -312,17 +312,6 @@ def speak_async(text):
     audio_file.close()
     os.remove(output_file)
     #st.write("音声再生が完了し、ファイルは削除されました。")
-
-
-def speak_async_NG(text):
-    def run():
-        engine.say(text)
-        engine.startLoop(False)
-        engine.iterate()
-        engine.endLoop()
-    thread = threading.Thread(target=run)
-    thread.start()
-    return thread
 ####################################################################### 
 ####################################################################### 
 #def main():
