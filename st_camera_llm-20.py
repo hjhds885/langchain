@@ -6,8 +6,9 @@ from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, WebRtcMode
 import cv2
 import base64
 import speech_recognition as sr
-import pyttsx3
-
+#import pyttsx3
+from gtts import gTTS
+import os
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
@@ -296,6 +297,24 @@ def speech_to_text():
 #######################################################################
 #音声出力関数
 def speak_async(text):
+    #st.write("音声ファイルを作成します。")
+    # テキストを音声に変換
+    tts = gTTS(text=text, lang='ja')
+    output_file = "output.mp3"
+    tts.save(output_file)
+    st.write("音声ファイルに保存しました。")
+    # 音声ファイルを提供
+    audio_file = open(output_file, "rb")
+    audio_bytes = audio_file.read()
+    st.audio(audio_bytes, format="audio/mp3", start_time=0,autoplay=True)
+    #st.write("音声再生が完了しました。")
+    # 音声ファイルを削除
+    audio_file.close()
+    os.remove(output_file)
+    #st.write("音声再生が完了し、ファイルは削除されました。")
+
+
+def speak_async_NG(text):
     def run():
         engine.say(text)
         engine.startLoop(False)
